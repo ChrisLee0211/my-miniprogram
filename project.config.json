@@ -1,0 +1,59 @@
+{
+    "description": "项目配置文件。",
+    "miniprogramRoot": "miniprogram/",
+    "cloudfunctionRoot": "cloudfunctions/",
+    "packOptions": {
+        "ignore": [],
+        "include": []
+    },
+    "setting": {
+        "urlCheck": true,
+        "es6": true,
+        "enhance": true,
+        "postcss": true,
+        "preloadBackgroundData": false,
+        "minified": true,
+        "coverView": true,
+        "autoAudits": false,
+        "showShadowRootInWxmlPanel": false,
+        "uglifyFileName": false,
+        "checkInvalidKey": true,
+        "uploadWithSourceMap": true,
+        "compileHotReLoad": true,
+        "useMultiFrameRuntime": true,
+        "useApiHook": true,
+        "useApiHostProcess": true,
+        "babelSetting": {
+            "ignore": [],
+            "disablePlugins": [],
+            "outputPath": ""
+        },
+        "useIsolateContext": false,
+        "packNpmManually": false,
+        "packNpmRelationList": [],
+        "minifyWXSS": true,
+        "disableUseStrict": false,
+        "minifyWXML": true,
+        "showES6CompileOption": false,
+        "useCompilerPlugins": ["typescript", "less"],
+        "ignoreUploadUnusedFiles": true,
+        "useStaticServer": true
+    },
+    "compileType": "miniprogram",
+    "libVersion": "2.21.4",
+    "appid": "wxabad6e0f393aefce",
+    "projectname": "my-miniprogram",
+    "simulatorType": "wechat",
+    "simulatorPluginLibVersion": {},
+    "scripts": {},
+    "watchOptions": {
+        "ignore": []
+    },
+    "debugOptions": {
+        "hidedInDevtools": []
+    },
+    "staticServerOptions": {
+        "servePath": ""
+    },
+    "condition": {}
+}
