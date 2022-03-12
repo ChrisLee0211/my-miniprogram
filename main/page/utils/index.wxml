@@ -1,0 +1,30 @@
+<view class="container">
+    <view class="header">各种计算器</view>
+    <view class="body">
+        <view class="date-counter">
+            <t-divider>
+                <text slot="content">还有多久过期</text>
+            </t-divider>
+            <view class="font-item">
+                <t-cell title="生产日期" bindclick="openTimePicker" required hover arrow note="{{datetimeText}}" />
+                <t-date-time-picker 
+                title="选择日期和时间" 
+                visible="{{datetimeVisible}}" 
+                value="{{datetime}}" 
+                format="YYYY-MM-DD" 
+                bindconfirm="onConfirm" bindcancel="closeTimePicker">
+                </t-date-time-picker>
+            </view>
+            <view class="font-item">
+                <t-cell title="保质期" hover arrow note="{{expireTime}}" bindclick="openExpiredPicker"></t-cell>
+                <t-picker visible="{{expireTimePickerVisible}}" title="请选择保质期时间"  bindconfirm="onExpireConfirm" bindcancel="onExpireCancel">
+                    <t-picker-column options="{{expireTypeOptions}}" value="{{expireType}}"></t-picker-column>
+                    <t-picker-column options="{{expireNumOptions}}" value="{{expirceNum}}"></t-picker-column>
+                </t-picker>
+            </view>
+            <view class="font-item">
+                <t-cell title="到期时间"  note="{{deadline}}" />
+            </view>
+        </view>
+    </view>
+</view>

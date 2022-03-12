@@ -1,0 +1,16 @@
+{
+    "pages": [
+        "page/utils/index"
+    ],
+    "window": {
+        "navigationBarTitleText": "李先生的背包"
+      },
+      "usingComponents": {
+        "t-button": "tdesign-miniprogram/button/button",
+        "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
+        "t-divider": "tdesign-miniprogram/divider/divider",
+        "t-cell": "tdesign-miniprogram/cell/cell",
+        "t-picker": "tdesign-miniprogram/picker/picker",
+        "t-picker-column": "tdesign-miniprogram/picker/picker-column"
+      }
+}
