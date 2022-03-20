@@ -1,4 +1,5 @@
 App({
+    towxml:require('/towxml/index'),
     onLaunch (options) {
         console.log(options)
       // Do something initial when launch.

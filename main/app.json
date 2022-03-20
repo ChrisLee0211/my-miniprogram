@@ -1,16 +1,33 @@
 {
     "pages": [
-        "page/utils/index"
+        "page/utils/index",
+        "page/markdown/index"
     ],
     "window": {
         "navigationBarTitleText": "李先生的背包"
-      },
-      "usingComponents": {
+    },
+    "tabBar": {
+        "list": [
+            {
+            "pagePath": "page/utils/index",
+            "text": "工具",
+            "iconPath": "page/utils/counter.png",
+            "selectedIconPath": "page/utils/counter_selected.png"
+            },
+            {
+            "pagePath": "page/markdown/index",
+            "text": "复习资料",
+            "iconPath": "page/markdown/md.png",
+            "selectedIconPath": "page/markdown/md_selected.png"
+            }
+        ]
+    },
+    "usingComponents": {
         "t-button": "tdesign-miniprogram/button/button",
         "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
         "t-divider": "tdesign-miniprogram/divider/divider",
         "t-cell": "tdesign-miniprogram/cell/cell",
         "t-picker": "tdesign-miniprogram/picker/picker",
         "t-picker-column": "tdesign-miniprogram/picker/picker-column"
-      }
+    }
 }
