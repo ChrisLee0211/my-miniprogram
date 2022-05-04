@@ -19,6 +19,7 @@ Component({
         luckyCount:1,
         isCounting:false,
         luckNumberGroups:[],
+        luckyType:'lottery_double',
     },
     observers:{
         'expirceNum, expireType, datetime':function(expirceNum,expireType, datetime) {
@@ -79,13 +80,18 @@ Component({
                 expireTimePickerVisible:false,
             })
       },
+      onLuckyTypeChange(e) {
+        this.setData({
+          luckyType:e.detail.value
+        })
+      },
       onLuckyCountChange(e) {
         this.setData({luckyCount: Number(e.detail.value)})
       },
       onStartGetLuckyNumber() {
         const count = this.data.luckyCount;
         this.setData({isCounting:true});
-        getLuckyNumbers(count, [12,23,2,11]).then((res) => {
+        getLuckyNumbers(count, [12,23,2,11], this.data.luckyType).then((res) => {
           console.log(res);
           this.setData({isCounting:false,luckNumberGroups:res});
         }).catch((err) => {

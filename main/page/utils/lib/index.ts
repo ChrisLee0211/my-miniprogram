@@ -1,7 +1,17 @@
-const RED = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33];
-const RED_LIMIT = 6
-const BULE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
-const BULE_LIMIT = 2
+const BASECONFIG = {
+    lottery_super: {
+        RED:35,
+        BULE: 12,
+        RED_LIMIT:5,
+        BULE_LIMIT:2,
+    },
+    lottery_double: {
+        RED:33,
+        BULE: 16,
+        RED_LIMIT:6,
+        BULE_LIMIT:1,
+    }
+}
 
 const getRandom = (limit: number, preset:number[]) => {
     let result = 0;
@@ -14,22 +24,23 @@ const getRandom = (limit: number, preset:number[]) => {
     return result;
 }
 
-const numberGenerator = (preset:number[]): Item => {
+const numberGenerator = (preset:number[], type:string): Item => {
+    const config = BASECONFIG[type];
     const reds: number[] = [];
     const blues: number[] = [];
-    const redPreset = preset.filter((num) => num < RED.length);
-    const bluePreset = preset.filter((num) => num <BULE.length);
-    for (let r = 0; r < RED_LIMIT; r++) {
-        let random = getRandom(RED.length,redPreset)
+    const redPreset = preset.filter((num) => num < config.RED);
+    const bluePreset = preset.filter((num) => num < config.BULE);
+    for (let r = 0; r < config.RED_LIMIT; r++) {
+        let random = getRandom(config.RED,redPreset)
         while (reds.includes(random)) {
-            random = getRandom(RED.length,redPreset)
+            random = getRandom(config.RED,redPreset)
         };
         reds.push(random);
     }
-    for (let b = 0; b < BULE_LIMIT; b++) {
-        let random = getRandom(BULE.length,bluePreset)
+    for (let b = 0; b < config.BULE_LIMIT; b++) {
+        let random = getRandom(config.BULE,bluePreset)
         while (blues.includes(random)) {
-            random = getRandom(BULE.length,bluePreset)
+            random = getRandom(config.BULE,bluePreset)
         };
         blues.push(random);
     };
@@ -69,14 +80,14 @@ interface randomGroup {
     blue: string[],
 }
 
-export const getLuckyNumbers = (count: number, preset: number[]): Promise<randomGroup[]> => {
+export const getLuckyNumbers = (count: number, preset: number[], type:string): Promise<randomGroup[]> => {
     const result: randomGroup[] = [];
     const cache: string[] = [];
     return new Promise((rs, rj) => {
         for (let i = 0; i < count; i++) {
-           let randomGroup = numberGenerator(preset);
+           let randomGroup = numberGenerator(preset, type);
             while(isDuplicate(cache, randomGroup)) {
-                randomGroup = numberGenerator(preset);
+                randomGroup = numberGenerator(preset, type);
             };
             const {red, blue} = randomGroup;
             const normalizeRed = red.map(normalizeNumberIterator)
