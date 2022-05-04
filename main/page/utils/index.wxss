@@ -13,6 +13,41 @@
     align-items: center;
     font-size: 20px;
 }
+.form-item {
+    margin:5rpx 0rpx;
+}
 .date-counter {
 
+}
+.lucky-number {
+    
+}
+.btn {
+    margin-top: 15rpx;
+    width: 100%;
+}
+.lucky-number-group {
+    display: flex;
+    justify-content: space-around;
+    margin: 20rpx 0;
+}
+.lucky-number-group-item {
+    display: flex;
+    justify-content: space-around;
+    flex: 1 1 auto;
+}
+.ball {
+    border-radius: 50%;
+    color: white;
+    width: 70rpx;
+    height: 70rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.red {
+    background-color: rgb(236, 67, 67);
+}
+.blue {
+    background-color: rgb(57, 57, 235);
 }

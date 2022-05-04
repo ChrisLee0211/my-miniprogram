@@ -1,5 +1,5 @@
 const dayjs = require('dayjs');
-
+const { getLuckyNumbers } = require('./lib/index');
 Component({
     data: {
         datetimeVisible: false,
@@ -15,13 +15,13 @@ Component({
         expireNumOptions: [],
         expireType: 'day',
         expirceNum: 0,
-        deadline: ''
+        deadline: '',
+        luckyCount:1,
+        isCounting:false,
+        luckNumberGroups:[],
     },
     observers:{
         'expirceNum, expireType, datetime':function(expirceNum,expireType, datetime) {
-            console.log('expirceNum',expirceNum)
-            console.log('expireType',expireType)
-            console.log('datetime',datetime);
             const targetDate = dayjs(datetime);
             const countResult = targetDate.add(expirceNum, expireType).format('YYYY-MM-DD')
             this.setData({
@@ -56,7 +56,6 @@ Component({
       },
       onConfirm(e) {
         const { value, formatValue } = e?.detail;
-        console.log('formatValue ===>', formatValue);
         this.setData({
           datetime: value.valueOf(),
           datetimeText: formatValue,
@@ -79,6 +78,20 @@ Component({
                 expirceNum:num,
                 expireTimePickerVisible:false,
             })
+      },
+      onLuckyCountChange(e) {
+        this.setData({luckyCount: Number(e.detail.value)})
+      },
+      onStartGetLuckyNumber() {
+        const count = this.data.luckyCount;
+        this.setData({isCounting:true});
+        getLuckyNumbers(count, [12,23,2,11]).then((res) => {
+          console.log(res);
+          this.setData({isCounting:false,luckNumberGroups:res});
+        }).catch((err) => {
+          console.error(err);
+          this.setData({isCounting:false});
+        })
       }
     }
   })
